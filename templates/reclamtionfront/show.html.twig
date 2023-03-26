@@ -1,0 +1,51 @@
+{% extends 'contact.html.twig' %}
+
+
+
+
+
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<cr>
+    <h1>Reclamation :</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamtion.id }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ reclamtion.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Descreption</th>
+                <td>{{ reclamtion.descreption }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reclamtion.email }}</td>
+            </tr>
+            <tr>
+                <th>DateR</th>
+                <td>{{ reclamtion.dateR ? reclamtion.dateR|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ reclamtion.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+   </button>
+      
+    
+    
+
+ 
+{% endblock %}

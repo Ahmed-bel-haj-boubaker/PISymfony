@@ -1,0 +1,42 @@
+{% extends "back.html.twig" %}
+{% block main %}
+<br><br><br><br><br>
+<div class="card" style=" padding-left:400px;">
+	<div class="card-body">
+	  <h5 class="card-title">table de categorie de Transport</h5>
+
+	  <!-- Default Table -->
+	  <table class="table" style="width: 50px;">
+		<thead>
+		  <tr>
+			
+			<th scope="col">type de transport</th>
+		  </tr>
+		</thead>
+		<tbody>
+	{% for s in CategoryTransports %}
+		<tr>
+			<td>{{ s.Typetransport}}</td>
+
+			<td>
+				<button  type="button" class="btn btn-success">
+					<a href="{{ path ('delete', {'id': s.id})}}">delete</a>
+				</button>
+			</td>
+			<td>
+		            	<button  type="button" class="btn btn-success" >		
+						<a href="{{ path ('app_CategoryTransport_edit',{'id': s.id})}}">update</a>
+					</button>
+		</td>
+		</tr>
+	{% endfor %}
+</tbody>
+	  </table>
+	  <!-- End Default Table Example -->
+	</div>
+  </div>
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+{{form_widget(form.typetransport)}}
+{{form_errors(form.typetransport)}}
+{{form_end(form)}}
+{% endblock %}

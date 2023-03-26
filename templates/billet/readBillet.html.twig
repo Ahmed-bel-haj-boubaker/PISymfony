@@ -1,0 +1,146 @@
+{% extends 'front.html.twig' %}
+
+{% block header %}
+   <header class=header-main>
+        <div class=header-upper>
+            <div class=container>
+          
+                <div class="row">
+                <ul>
+                {% if is_granted('IS_AUTHENTICATED_FULLY')  %} 
+
+                 <li>                
+                 {% if app.user.image == null   %}
+                        <img src="{{asset('/uploads/images/user.jpg')}}" alt="Profile"  class="rounded-circle" style="width: 25px;padding-top:2px;">
+                        {% else %}
+                        <img src="{{asset('/uploads/images/' ~ app.user.image)}}" alt="Profile"  class="rounded-circle" style="width: 25px;padding-top:6px;">
+                       {% endif %}</li>
+                        <li><a href="{{path('clientProfileee')}}">{{app.user.firstName}} {{app.user.secondName}}</a></li>
+                        
+                        <li><a href="{{path('app_logout')}}"><i class="fa fa-sign-out"></i> 
+                        <span>Logout</span></a>
+                    </li>                 
+                    {% else %}
+                     <ul>
+
+                        <li><a href="{{path('app_login')}}">Signup/login</a></li>
+                        <li><a href=shopcart.html><i class="fa fa-shopping-cart"></i> <span>cart(<span  class=cartitems>0</span>)</span></a></li>
+                    </ul>
+                    {% endif %}
+                </ul>
+                   
+                </div>
+            </div>
+        </div>
+       <div class=header-lower clearfix>
+            <div class=container>
+                <div class=row><h1 class=logo><a href=index-2.html><img src="{{asset('assetsFront/images/tunisport.png')}}" alt=image></a></h1>
+
+                 <div class=menubar>
+                        <nav class=navbar>
+                            <div class=nav-wrapper>
+                                <div class=navbar-header>
+                                    <button type=button class=navbar-toggle><span class=sr-only>Toggle navigation</span>
+                                        <span class=icon-bar></span></button>
+                                </div>
+                                <div class=nav-menu>
+                                    <ul class="nav navbar-nav menu-bar">
+                                        <li><a href="{{path('frontMatch')}}">Home <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                         <li><a href="{{path('read_Match')}}">Matchs <span></span> <span></span>
+                                            <span></span> <span></span></a></li>
+                                        <li><a href="#">réservation <span></span> <span></span> <span></span>
+                              
+
+                                        <li><a href="{{path('readblogfront')}}" >blog <span></span> <span></span>
+                                            <span></span> <span></span></a></li>
+                                        
+                                        <li><a href=shop.html>shop <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                             <li><a >Hebergement <span></span> <span></span> <span></span> <span></span></a>
+                                            <ul class=sub-menu>
+                                                <li><a href="{{path('listHebergement')}}">Liste hebergement </a></li>
+                                                <li><a href="{{path('listTransport')}}">Transport</a></li>
+                     
+                                            </ul>
+                                        </li>
+                                        <li><a href=contact.html>contact <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class=social><a href=https://www.facebook.com/templatespoint.net class=facebook><i
+                            class="fa fa-facebook"></i></a> <a href=https://twitter.com/itobuztech class=twitter><i
+                            class="fa fa-twitter"></i></a> <a href=https://www.behance.net/ class=behance><i
+                            class="fa fa-behance"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block banner %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>Réserver <span>Billet</span></h2></div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <section class=cartwrap>
+        <div class=cartshop>
+            <div class=bg-red></div>
+            <div class=container>
+                <div class=row>
+                    <div class=modal-body>
+                        <div class="cartHeader clearfix">
+                            <div class=header01><h4>Vos Billets</h4></div>
+                            <div class=header02><h4><span> <span class=cartitems></span> </span>
+                                <a href=#><i class="fa fa-cart-plus"></i> <span class=cartitems>{{reservation.nombreBillet}}</span></a></h4>
+
+                                
+
+                                <p class=datetime></p></div>
+                        </div>
+                        <div class="card-item clearfix">
+                            
+                            <div>
+                                <div class=big-content><h4>Référence réservation: </h4><h3>{{ reservation.id }}</h3></div>
+                                
+                                <div class="big-content medium-content"><h4>Nombre de billets: </h4><h3>{{ reservation.nombreBillet }}</h3></div>
+                                
+                                <div class="big-content small-content"><h4>Prix billet: </h4><h3>{{ reservation.matchF.prix}} DT</h3></div>
+                                
+                            </div>
+                        
+                            <div id=cartItems></div>
+                            <div class="card-item cart-total clearfix"></div>
+                            <div class="card-item clearfix">
+                                <div class=big-content><h4>date de réservation</h4>
+                                    <p>{{reservation.dateResevation.format('d/m/Y')}}</p>
+                                </div>
+                                <div class=big-content><h4>Etat de la réservation</h4>
+                                    {{reservation.Etat}}
+                                </div>
+                            </div>
+                            <div class="card-item cart-total clearfix">
+                                <div class="big-content medium-content"><h4>Cout total</h4></div>
+                                <div class="big-content small-content"><h4 id="carttotal">{{ reservation.matchF.prix * reservation.nombreBillet}} DT</h4></div>
+                            </div>
+                        </div>
+                        <div class=modal-footer>
+                            <form action="{{ path('payment',{'id':reservation.id}) }}" ><button class=btn-red>Procéder au paiement</button></form
+                        </div>
+
+                        <div class=modal-footer>
+                            <form action="{{ path('update_Reservation',{'id':reservation.id}) }}" ><button class=btn-red>Modifier réservation</button></form>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

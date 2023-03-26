@@ -1,0 +1,56 @@
+{% extends 'back.html.twig' %}
+
+
+
+
+
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<cr>
+    <h1>Reclamation :</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ reclamation.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Descreption</th>
+                <td>{{ reclamation.descreption }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reclamation.email }}</td>
+            </tr>
+            <tr>
+                <th>DateR</th>
+                <td>{{ reclamation.dateR ? reclamation.dateR|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ reclamation.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+   <button class="btn btn-outline-secondary">
+    <a href="{{ path('reclamation_index') }}">retour a list</a>
+   </button>
+      
+    
+    <button class="btn btn-outline-info">
+                    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">modifier</a>
+                    </button>
+   
+    {{ include('reclamation/deleteRec.html.twig') }}
+
+ 
+{% endblock %}

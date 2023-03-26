@@ -1,0 +1,35 @@
+{% extends 'back.html.twig' %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ajouter une réservation</h5>
+    
+          <!-- Multi Columns Form -->
+          <form class="row g-3">
+            {{ form_start(f, { 'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="col-md-12">
+                {{ form_label(f.dateResevation, 'Date de réservation') }}
+                {{ form_widget(f.dateResevation, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(f.etat, 'Etat de la réservation') }}
+                {{ form_widget(f.etat, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(f.nombreBillet, 'Nombre de billets') }}
+                {{ form_widget(f.nombreBillet, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(f.matchF, 'Match associé') }}
+                {{ form_widget(f.matchF, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+            {{ form_end(f) }}
+          </form>
+    
+        </div>
+      </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+    
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Liste des réservations</h5>
+                
+    
+                <!-- Table with stripped rows -->
+                <table class="table datatable">
+                  <thead>
+                    <tr>
+                        <th scope="col" class="border-0 rounded-start">Référence_réservation</th>
+                        <th scope="col" class="border-0">Date</th>
+                        <th scope="col" class="border-0">Nombre de billets</th>
+                        <th scope="col" class="border-0">Etat</th>
+                        <th scope="col" class="border-0 rounded-end">Supprimer</th>
+                        <th scope="col" class="border-0 rounded-end">Modifier</th>
+                    </tr>
+                  </thead>
+                  {%  for r in  reservation %}
+                <tbody>
+                <!-- Table item -->
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <!-- Title -->
+                            <h6 class="mb-0 ms-2 table-responsive-title">
+                                <a href="#">{{ r.id }}</a>
+                            </h6>
+                        </div>
+                    </td>
+                    <td>{{ r.dateResevation.format('d/m/Y') }}</td>
+                    <td>{{ r.nombreBillet }}</td>
+                    <td>{{ r.Etat }}</td>
+            
+                    <!-- Action item -->
+                    <td><form action="{{ path('deleteReservation', {id:r.id}) }}">
+                      <button  class="btn btn-danger"><i class="bi bi-trash"></i>supprimer</button>
+                  </form> </td>
+                  <td><form action="{{ path('updateReservation', {id:r.id}) }}">
+                    <button  class="btn btn-success"><i class="bi bi-pen-fill"></i>modifier</button>
+                </form> 
+               </td>
+                
+                </tbody>
+                {% endfor %}
+                </table>
+    
+              
+            
+    
+          </div>
+        </div>
+      </section>
+    
+    </main><!-- End #main -->
+{% endblock %}
+
+
+

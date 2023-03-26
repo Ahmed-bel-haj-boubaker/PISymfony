@@ -1,0 +1,64 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+    
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Liste des billets</h5>
+                
+    
+                <!-- Table with stripped rows -->
+                <table class="table datatable">
+                  <thead>
+                    <tr>
+                        <th scope="col" class="border-0 rounded-start">Numéro_billet</th>
+                        <th scope="col" class="border-0">Prix</th>
+                        <th scope="col" class="border-0">Supprimer</th>
+                        <th scope="col" class="border-0">Modifier</th>
+                    </tr>
+                  </thead>
+                  {%  for b in billet %}
+                <tbody>
+                <!-- Table item -->
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <!-- Title -->
+                            <h6 class="mb-0 ms-2 table-responsive-title">
+                                <a href="#">{{ b.id }}</a>
+                            </h6>
+                        </div>
+                    </td>
+                    <td>{{ b.prix }}</td>
+                    
+            
+                    <!-- Action item -->
+                    <td><form action="{{ path('deleteBillet', {id:b.id}) }}">
+                      <button  class="btn btn-danger">supprimer</button>
+                  </form> </td>
+                  <td><form action="{{ path('updateBillet', {id:b.id}) }}">
+                    <button class="btn btn-success" >modifier</button>
+                </form> 
+               </td>
+                
+                </tbody>
+                {% endfor %}
+                </table>
+    
+              <form action="{{ path('createBillet') }}">
+                <button class="btn btn-primary mb-0 mt-3" >Ajouter un billet</button>
+            </form>
+            
+    
+          </div>
+        </div>
+      </section>
+    
+    </main><!-- End #main -->
+{% endblock %}
+
+
+

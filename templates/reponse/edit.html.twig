@@ -1,0 +1,24 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<cr>
+    <center><h1>Modifier Reponse</h1></center>
+
+    {{ include('reponse/Repform.html.twig', {'button_label': 'Update'}) }}
+
+    <center>
+ <button class="btn btn-outline-secondary">
+    <a href="{{ path('app_reponse_index') }}">Retour a list</a>
+ </button>
+</center>
+<br><br>
+
+
+   
+    {{ include('reponse/Repdelete.html.twig') }}
+    
+{% endblock %}

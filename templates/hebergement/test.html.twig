@@ -1,0 +1,64 @@
+{% extends "front.html.twig" %}
+{% block banner %}
+
+
+{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br><br><br><br><br>
+
+
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  {# <audio controls>
+    <source src="{{ asset('public/audio/Hayya Hayya (Better Together) Lyrics  FIFA World Cup 2022.mp3') }}" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio> #} {{form(form_NSC)}}
+              <div class=row><h2 class=heading>Liste Hebergement <span>dans Tunisie</span></h2>
+              </div
+  <div class="card" style=" padding-left:700px;">
+
+  <button  type="button" class="btn btn-secondary rounded-pill">
+						<a href="{{ path ('map')}}">voir en map</a>
+					
+
+          <br>
+
+  <body>
+    </div>
+  
+    {% for s in Hebergements %}
+		   <div class=shop_detais>
+                                <div class="shop01 clearfix">
+                                    <div class=shop-img>
+                                        <div class=bgimg>			
+                                        <img src="{{ asset('/uploads/images/' ~ s.getImage()) }}" width="400px" height="300px" alt="" />
+
+</div>
+                                    </div>
+                                    <div class=shop_info><h4 class=headline01><a href=product-details.html>{{s.nomheberg}}</a></h4>
+
+                                        <div class=star><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i></div>
+                                        <p>{{ s.deschebergement}}</p>
+
+                                        <div class=headline01>{{ s.localisation}}</div>
+                                        <div class=addcart-wrap><a href=# class=btn-fav>add to wish list</a></div>
+                                    </div>
+                                </div>
+                            </div>
+		{% endfor %}
+  </body>
+  <div  class="pagination-links"> 
+  {{ knp_pagination_render(Hebergements) }}
+</div>
+</html>
+   
+{% endblock %}
+                           

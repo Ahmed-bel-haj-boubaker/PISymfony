@@ -1,0 +1,12 @@
+<form action="{{ path('event') }}" method="get">
+    <div class="form-group">
+<label for="search" class="form-label">Rechercher :</label>
+<div class="input-group">
+    <input type="text" id="search" name="q" class="form-control" value="{{ term }}">
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+    </button>
+</div>
+</div>
+<button type="submit" class="btn btn-primary">Rechercher</button>
+</form>

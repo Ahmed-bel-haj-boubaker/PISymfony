@@ -1,0 +1,22 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <h1> Ajouter un Commentaire </h1>
+    {{ form_start(f, { 'attr': {'class': 'form-horizontal'}}) }}
+
+        {{ form_label(f.contenuCom, 'Commentaire ') }}
+        {{ form_widget(f.contenuCom, { 'attr': {'class': 'form-control'} }) }}
+         {{form_errors(f.contenuCom) }}
+
+{{ form_label(f.blog, 'Blog ') }}
+        {{ form_widget(f.blog, { 'attr': {'class': 'form-control'} }) }}
+         {{form_errors(f.blog) }}
+
+    {{ form_label(f.dateC, 'Date ') }}
+        {{ form_widget(f.dateC, { 'attr': {} }) }}
+         {{form_errors(f.dateC) }}
+        
+        
+    {{ form_end(f) }}
+</main>    
+{% endblock %}

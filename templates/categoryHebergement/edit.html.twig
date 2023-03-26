@@ -1,0 +1,30 @@
+{% extends "back.html.twig" %}
+{% block main %}
+<br><br><br><br><br>
+<table border="1">
+	<tr></tr>
+	
+	{% for c in CategoryHebergement %}
+		<tr>
+			<td>{{ c.nomcategory}}</td>
+
+			<td>
+				<button>
+				</button>
+			</td>
+			<td>
+				<button>
+					<a href="{{ path ('showC', {'id': c.id})}}">show</a>
+				</button>
+			</td>
+			<td>
+				<button>
+					<a href="{{ path ('app_CategoryHebergement_edit', {'id': c.id})}}">update</a>
+				</button>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+<br>
+{{form(formC)}}
+{% endblock %}

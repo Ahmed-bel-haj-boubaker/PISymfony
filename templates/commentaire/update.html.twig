@@ -1,0 +1,15 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <h1> Ajouter un Blog </h1>
+    {{ form_start(f, { 'attr': {'class': 'form-horizontal'}}) }}
+
+        {{ form_label(f.contenuCom, 'Commentaire ') }}
+        {{ form_widget(f.contenuCom, { 'attr': {'class': 'form-control'} }) }}
+    
+    
+        
+        
+    {{ form_end(f) }}
+</main>    
+{% endblock %}

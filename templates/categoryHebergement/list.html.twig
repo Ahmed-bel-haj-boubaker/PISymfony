@@ -1,0 +1,45 @@
+
+{% extends "back.html.twig" %}
+{% block main %}
+<div class="card" style=" padding-left:400px;">
+	<div class="card-body">
+	  <h5 class="card-title">table de categorie hebergement</h5>
+
+	  <!-- Default Table -->
+	  <table class="table" style="width: 50px;">
+		<thead>
+		  <tr>
+			
+			<th scope="col">categorie hebergement</th>
+		  </tr>
+		</thead>
+		<tbody>
+			{% for c in CategoryHebergements %}
+			<tr>
+				<td>{{ c.nomcategory}}</td>
+	
+				<td>
+					<button  type="button" class="btn btn-success">
+						<a href="{{ path ('delete_CategoryHebergement', {'id': c.id})}}">delete</a>
+					</button>
+				</td>
+			
+				<td>
+					<button type="button" class="btn btn-danger">		
+						<a href="{{ path ('app_CategoryHebergement_edit', {'id': c.id})}}">update</a>
+					</button>
+				
+					
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	  </table>
+	  <!-- End Default Table Example -->
+	</div>
+  </div>
+{{form_start(formC,{'attr':{'novalidate':'novalidate'}})}}
+{{form_widget(formC.nomcategory)}}
+{{form_errors(formC.nomcategory)}}
+{{form_end(formC)}}
+{% endblock %}

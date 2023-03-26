@@ -1,0 +1,18 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<cr>
+    <center><h1>Modifier Reclamation</h1></center>
+
+    {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+
+   <button class="btn btn-outline-secondary">
+    <a href="{{ path('reclamation_index') }}">retour a list</a>
+   </button>
+
+    {{ include('reclamation/deleteRec.html.twig') }}
+{% endblock %}

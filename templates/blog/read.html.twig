@@ -1,0 +1,53 @@
+
+{% extends 'back.html.twig' %}
+{% block main %}
+
+<main id="main" class="main">
+<center>
+{#
+<form method="post" action="{{ path('find_blog') }}">
+    <label> search</label>
+    <input type="text" id="titre" name="titre"/>
+<input type="submit" value="search"/>
+</form>
+#}
+
+<h1 class="card-title"> Liste des blog</h1>
+<div class="card-body">
+
+<table border="2" class="table datatable dataTable-table">
+    <tr> <th>Id</th>
+        <th> Titre</th>
+        <th> Descreption</th>
+        <th> Contenu</th>
+        <th> Image</th>
+
+    </tr>
+    {%  for c in  blogs %}
+        <tr>
+            <td>  {{ c.id }}</td>
+            <td>   {{ c.titre }} </td>
+            <td>  {{ c.descreption }} </td> 
+            <td>  {{ c.contenu }} </td>
+            <td><img src="{{ asset('/uploads/images/' ~ c.getImage()) }}" width="100px" height="100px" alt="" />
+ </td>
+            <td> <a class="btn btn-danger" href="{{ path('delete_blog', {id:c.id}) }}"><i class="bi bi-trash"></i>Delete </a>
+                <a class="btn btn-primary" href="{{ path('update_blog', {id:c.id}) }}"><i class="bi bi-pen-fill"></i>Update </a>
+                <a class="btn btn-success" href="{{ path('app_resume', {text:c.contenu}) }}"><i class="bi bi-newspaper"></i>Resume </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+<div class="pagination">
+    {{ knp_pagination_render(blogs) }}
+</div>
+</div>
+
+<form action="{{ path('add_blog') }}">
+    <button type="submit" class="btn btn-primary"><i class="bi bi-star me-1"></i>Add blog</button>
+</form>
+</center>
+
+</main>
+{% endblock %}

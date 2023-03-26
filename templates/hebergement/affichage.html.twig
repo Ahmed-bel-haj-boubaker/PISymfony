@@ -1,0 +1,37 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+{{form(form_NSC)}}
+
+<table border="1">
+	<tr>
+		<th>NSC</th>
+		<th>Name</th>
+        <th>Email</th>
+		<th>Delete</th>
+		<th>Show</th>
+	</tr>
+	{% for s in Hebergements %}
+		<tr>
+			<TD><img src="{{ asset('/uploads/images/' ~ s.getImage()) }}" width="100px" height="100px" alt="" /></TD>
+			<td>{{s.id}}</td>
+			<td>{{ s.nomheberg}}</td>
+			<td>
+				
+			</td>
+			<td>
+				<button>
+					<a href="{{ path ('showS', {'id': s.id})}}">show</a>
+				</button>
+			</td>
+			<td>
+				<button>
+					<a href="{{ path ('app_Hebergementedit', {'id': s.id})}}">update</a>
+				</button>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+<br>
+{% endblock %}

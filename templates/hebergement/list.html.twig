@@ -1,0 +1,64 @@
+
+
+
+
+{% extends "back.html.twig" %}
+{% block main %}
+<br><br><br><br><br>
+
+{{form(form_NSC)}}
+<div class="card"  style=" padding-left:500px;">
+	<div class="card-body">
+	  <h5 class="card-title">liste hebergement</h5>
+
+	  <!-- Default Table -->
+	  <table class="table" style="width: 200px;">
+		<thead>
+		  <tr>
+			<th scope="col">image hebergement</th>
+
+			<th scope="col">id</th>
+
+			<th scope="col">nom hebergement</th>
+			<th scope="col">description hebergement</th>
+			<th scope="col">Lieux</th>
+
+		  </tr>
+		</thead>
+		<tbody>
+			{% for s in Hebergements %}
+			<tr>
+				<TD><img src="{{ asset('/uploads/images/' ~ s.getImage()) }}" width="100px" height="100px" alt="" /></TD>
+				<td>{{s.id}}</td>
+				<td>{{ s.nomheberg}}</td>
+				<td>{{ s.deschebergement}}</td>
+				<td>{{ s.localisation}}</td>
+
+				<td>
+					<button  type="button" class="btn btn-secondary rounded-pill">
+						<a href="{{ path ('delete_Hebergement', {'id': s.id})}}">delete</a>
+					</button>
+				</td>
+				
+				<td>
+					<button  type="button" class="btn btn-secondary rounded-pill">
+						<a href="{{ path ('app_Hebergementedit', {'id': s.id})}}">update</a>
+					</button>
+				</td>
+
+
+			</tr>
+		{% endfor %}
+		</tbody>
+	  </table>
+	  <!-- End Default Table Example -->
+	  								<td>
+
+				 <button class="btn btn-secondary rounded-pill">
+                  <a href="{{path ('AddHebergement')}}"> Ajouter</a>
+                  </button>
+				  				</td>
+	</div>
+</div>
+ 
+{% endblock %}

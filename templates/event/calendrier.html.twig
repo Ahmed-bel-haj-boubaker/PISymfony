@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #calendrier{
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div id="calendrier">
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendrier');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: "{{ path('event_list') }}"
+    });
+
+    calendar.render();
+    
+    calendar.on('dateClick', function(info) {
+        $.ajax({
+            url: "{{ path('event_list') }}",
+            data: {
+            
+                start: info.dateStr
+            },
+            success: function(data) {
+                calendar.removeAllEvents();
+                calendar.addEventSource(data);
+            }
+        });
+    });
+});
+
+</script>
+
+{% endblock %}

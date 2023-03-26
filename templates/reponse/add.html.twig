@@ -1,0 +1,40 @@
+{% extends 'back.html.twig' %}
+
+
+
+
+
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+
+
+    <center><h1>Ajouter une reponse</h1></center>
+<br><br>
+<br><br>
+
+    {{ include('reponse/Repform.html.twig') }}
+ <br><br>
+
+
+ <center>
+ <button class="btn btn-outline-secondary">
+    <a href="{{ path('app_reponse_index') }}">Retour a list</a>
+ </button>
+</center>
+<br><br>
+<center><button class="btn btn-outline-success">
+   <a href="{{ path('reclamation_index') }}">Les reclamations</a>
+ </button></center
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+{% endblock %}
+

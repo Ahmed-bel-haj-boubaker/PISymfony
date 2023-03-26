@@ -1,0 +1,16 @@
+{% extends 'back.html.twig' %}
+
+{% block main %}
+<main id="main" class="main">
+    <h1> Ajouter une réservation </h1>
+    {{ form_start(f, { 'attr': {'novalidate': 'novalidate'}}) }}
+    
+        {{ form_label(f.nombreBillet, 'Nombre de billets') }}
+        {{ form_widget(f.nombreBillet, { 'attr': {'class': 'form-control'} }) }}
+
+   
+    
+    
+    {{ form_end(f) }}
+</main>    
+{% endblock %}

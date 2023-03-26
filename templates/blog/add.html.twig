@@ -1,0 +1,27 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <h1> Ajouter un Blog </h1>
+    {{form_start(f,{'attr':{'novalidate':'novalidate'}})}}
+   
+
+        {{ form_label(f.titre, 'titre ') }}
+        {{ form_widget(f.titre, { 'attr': {'class': 'form-control'} }) }}
+        {{form_errors(f.titre) }}
+    
+        
+        {{ form_label(f.descreption, 'descreption') }}
+        {{ form_widget(f.descreption, { 'attr': {'class': 'form-control'} }) }}
+        {{form_errors(f.descreption) }}
+
+        {{ form_label(f.contenu, 'contenu') }}
+        {{ form_widget(f.contenu, { 'attr': {'class': 'form-control'} }) }}
+        {{form_errors(f.contenu) }}
+
+        {{ form_label(f.image, 'Image') }}
+        {{ form_widget(f.image, { 'attr': {'class': 'form-control'} }) }}
+        
+        <button class="btn btn-primary">ajouter</button>
+    {{ form_end(f) }}
+</main>    
+{% endblock %}

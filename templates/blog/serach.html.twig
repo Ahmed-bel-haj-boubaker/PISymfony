@@ -1,0 +1,35 @@
+<form method="post" action="{{ path('find_blog') }}">
+    <label> search</label>
+    <input type="text" id="titre" name="titre"/>
+<input type="submit" value="search"/>
+</form>
+
+<h1> Liste des blog</h1>
+<table border="2">
+    <tr> <th>Id</th>
+        <th> Titre</th>
+        <th> Descreption</th>
+        <th> Contenu</th>
+        <th> Image</th>
+
+    </tr>
+    {%  for c in  blogs %}
+        <tr>
+            <td>  {{ c.id }}</td>
+            <td>   {{ c.titre }} </td>
+            <td>  {{ c.descreption }} </td>
+            <td>  {{ c.contenu }} </td>
+            <td><img src="{{ asset('/uploads/images/' ~ c.getImage()) }}" width="100px" height="100px" alt="" />
+ </td>
+            <td> <a href="{{ path('delete_blog', {id:c.id}) }}">Delete </a>
+                <a href="{{ path('update_blog', {id:c.id}) }}">Update </a>
+
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<form action="{{ path('add_blog') }}">
+    <button>Add blog</button>
+</form>
+</center>
+

@@ -1,0 +1,47 @@
+
+
+{% extends 'back.html.twig' %}
+
+
+
+
+
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<center>
+    <h1>Reclamation :</h1>
+</center>
+    <center>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reponse.id }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ reponse.reponse }}</td>
+            </tr>
+           
+        </tbody>
+   
+    </table>
+  </center>
+  <center>
+   <button class="btn btn-outline-secondary">
+    <a href="{{ path('app_reponse_index') }}">retour a list</a>
+   </button>
+      
+    
+    <button class="btn btn-outline-info">
+                    <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}">modifier</a>
+                    </button>
+   
+    
+    {{ include('reponse/_delete_form.html.twig'') }}
+</center>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'back.html.twig' %}
+
+
+
+
+
+{% block main %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+<cr>
+    <h1>Reclamation index</h1>
+
+<div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table class="table datatable dataTable-table">
+                <thead>
+                  <tr><th scope="col" data-sortable="" style="width: 5.58167%;"><a href="#" class="dataTable-sorter">id</a></th>
+                  <th scope="col" data-sortable="" style="width: 28.2021%;"><a href="#" class="dataTable-sorter">Sujet</a></th> 
+                  <th scope="col" data-sortable="" style="width: 37.1622%;"><a href="#" class="dataTable-sorter">Description</a></th>
+                  <th scope="col" data-sortable="" style="width: 9.54759%;"><a href="#" class="dataTable-sorter">Email</a></th>
+                  <th scope="col" data-sortable="" style="width: 19.5358%;"><a href="#" class="dataTable-sorter">DateR</a></th>
+                  <th scope="col" data-sortable="" style="width: 19.5358%;"><a href="#" class="dataTable-sorter">Status</a></th>
+                  <th scope="col" data-sortable="" style="width: 9.54759%;"><a href="#" class="dataTable-sorter">Actions</a></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for reclamtionfront in reclamtionfronts %}
+            <tr>
+                <td>{{ reclamtionfront.id }}</td>
+                <td>{{ reclamtionfront.sujet }}</td>
+                <td>{{ reclamtionfront.descreption }}</td>
+                <td>{{ reclamtionfront.email }}</td>
+                <td>{{ reclamtionfront.dateR ? reclamtionfront.dateR|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamtionfront.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    
+                    <button class="btn btn-outline-warning">
+                <a href="{{ path('reclamtionfront_show', {'id': reclamtionfront.id}) }}">Afficher</a>
+                    </button>
+                    <button class="btn btn-outline-info">
+                    <a href="{{ path('reclamtionfront_edit', {'id': reclamtionfront.id}) }}">Modifier</a>
+                    </button>
+                
+                </td>
+
+            
+                
+            </td>
+            
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+              </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 5 of 5 entries</div>
+              <nav class="dataTable-pagination"><ul class="dataTable-pagination-list"></ul></nav></div></div>
+  <center><button class="btn btn-outline-success">
+   <a href="{{ path('reclamtionfront_addR') }}">Ajouter</a>
+ </button></center>
+<br><br>
+
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+{% endblock %}
+
+

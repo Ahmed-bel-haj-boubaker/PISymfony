@@ -1,0 +1,163 @@
+
+
+{% extends 'front.html.twig' %}
+
+{% block banner %}
+<div class=innerbannerwrap>
+    <div class=content></div>
+    <div class=innerbanner><h2 class=bannerHeadline>book <span>ticket</span></h2></div>
+</div>
+{% endblock %}
+{% block body %}
+<section class="latest_news bg-white">
+    <div class=container>
+        <div class=row><h2 class=heading>latest <span>news</span></h2>
+
+            <p class=headParagraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil debitis mollitia
+                qui libero voluptate ratione, molestias! Necessitatibus voluptatem temporibus doloremque non, vel
+                ipsam, nesciunt dolores consequatur, est tempora ut! Est?>Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Nihil debitis mollitia qui libero voluptate ratione, molestias! Necessitatibus
+                voluptatem temporibus doloremque non, vel ipsam, nesciunt dolores consequatur, est tempora ut!
+                Est.</p>
+
+                <div class="matchSchedule_details row">
+                    {% for e in event %}
+                    <div class="match_next right-triangle">
+                        <div class="wrap_match_next right-triangle">
+                            <div class="wrap-logo clearfix">
+                                <div class=logo-match><img width="290" height="150" src="{{ asset('uploads/images/' ~ e.getImage()) }}" alt=image></div>
+                              
+                            </div>
+                            <div class=right-padding><h4 class=headline03>{{e.nomEvent}}</h4>
+                               
+                                <p>{{e.typeEvent}}</p></div>
+                        </div>
+                    </div>
+                    <div class=match_versus>
+                        <div class="bg-blackimg match_versus02">
+                            <div class=nextmatchDetails><p></p>
+
+                                <iframe width="480" height="350" src="{{e.videourl}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                
+                               </div>
+                        
+                        </div>
+                    </div>
+                    <div class=match_timing>
+                        <ul class=counter-wrap>
+                            <li><span>{{ e.dateEvent.format('d/m/Y') }}</span>date de l'evenement</li>
+                            <li><span>{{ e.heureDeb.format('H:i') }}</span>heure de debut</li>
+                            <li><span>{{ e.heureFin.format('H:i') }}</span>heure de fin</li>
+                            <li><span>{{e.localisation}}</span>localisation</li>
+                        </ul>
+                    </div>
+                      
+                        <a href="{{ path('event_like', {'id': e.id }) }}" class="btn btn-link js-like"><i class="far fa-thumbs-up"></i> Like</a>
+                        <span class="js-like">10</span>
+                        
+                        <span class="js-label">j'aime</span>
+                    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <script>
+            function onClickBtnLike(event) {
+    event.preventDefault();
+    const likeLink = this;
+    const likeIcon = likeLink.querySelector('i.fa-thumbs-up');
+    const likeCount = likeLink.nextElementSibling;
+
+    axios.get(likeLink.href)
+        .then(function (response) {
+            const likes = response.data.likes;
+            likeCount.textContent = likes;
+
+            if (likeIcon.classList.contains('fas')) { // check if already liked
+                likeIcon.classList.remove('fas');
+                likeIcon.classList.add('far');
+            } else { // if not liked yet
+                likeIcon.classList.remove('far');
+                likeIcon.classList.add('fas');
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+document.querySelectorAll('a.js-like').forEach(function (link) {
+    link.addEventListener('click', onClickBtnLike);
+});
+        </script>
+        
+    </div>
+    
+        <h1 style="color: brown;">Noter ton evenement</h1>
+        <i class="star" data-note="1">&#9733;</i>
+        <i class="star" data-note="2">&#9733;</i>
+        <i class="star" data-note="3">&#9733;</i>
+        <i class="star" data-note="4">&#9733;</i>
+        <i class="star" data-note="5">&#9733;</i>
+        <i class="note">Note:</i>
+        <script>
+            const stars = document.querySelectorAll('.star');
+            let check = false;
+            stars.forEach(star => {
+                star.addEventListener('mouseover', selectStars);
+                star.addEventListener('mouseleave', unselectStars);
+                star.addEventListener('click', activeSelect);
+            })
+    
+            function selectStars(e) {
+                const data = e.target;
+                const etoiles = priviousSiblings(data);
+                if (!check) {
+                    etoiles.forEach(etoile => {
+                        etoile.classList.add('hover');
+                    })
+                }
+    
+            }
+    
+            function unselectStars(e) {
+                const data = e.target;
+                const etoiles = priviousSiblings(data);
+                if (!check) {
+                    etoiles.forEach(etoile => {
+                        etoile.classList.remove('hover');
+                    })
+                }
+            }
+    
+            function activeSelect(e) {
+                if (!check) {
+                    check = true;
+                    document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
+                }
+            }
+    
+            function priviousSiblings(data) {
+                let values = [data];
+                while (data = data.previousSibling) {
+                    if (data.nodeName === 'I') {
+                        values.push(data);
+                    }
+                }
+                return values;
+            }
+        </script>
+    
+    
+   
+</section>
+{% for i in event %}
+    <form action="{{ path('pdf_event',{'id':i.id}) }}">
+    <button class="btn btn-primary mb-0 mt-3" >imprimer invitation</button>
+</form>
+{% endfor %}
+
+{% endblock %}
+
+

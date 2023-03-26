@@ -1,0 +1,143 @@
+
+
+  <section class="section" style="padding-left:300px">
+  
+    <div class="row">
+      <div class="col-lg-12">
+      
+        <div class="card">
+        
+          <br><br><br><br><br><br>
+          <div class="card-body">
+          
+            <h5 class="card-title">ADMINs Table</h5>
+         
+
+            <!-- Table with stripped rows -->
+            <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+            
+              <div class="dataTable-top">
+                <div class="dataTable-dropdown">
+                  <label>
+                    <select class="dataTable-selector">
+                      <option value="5">5</option>
+                      <option value="10" selected="">10</option>
+                      <a href="{{path('trieAsc')}}">15</a>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                    </select>entries per page
+                  </label>
+                </div>
+                <div class="dataTable-search">
+                  <input class="dataTable-input" placeholder="Search..." type="text" id="searchAdmin" />
+                </div>
+              </div>
+              <div class="dataTable-container">
+                <table class="table datatable dataTable-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-sortable="" style="width: 7.37101%;">
+                        <a href="#" class="dataTable-sorter">#</a>
+                      </th>
+                      <th scope="col" data-sortable="" style="width: 12.285%;">
+                        <a href="#" class="dataTable-sorter">image</a>
+                      </th>
+                      <th scope="col" data-sortable="" style="width:12.285%;">
+                        <a href="#" class="dataTable-sorter">first name</a>
+                      </th>
+                      <th scope="col" data-sortable="" style="width: 12.285%;">
+                        <a href="#" class="dataTable-sorter">second name </a>
+                      </th>
+                      <th scope="col" data-sortable="" style="width: 19.1646%;">
+                        <a href="#" class="dataTable-sorter">phone</a>
+                      </th>
+                       <th scope="col" data-sortable="" style="width: 19.1646%;">
+                        <a href="#" class="dataTable-sorter">email</a>
+                      </th>
+
+                      <th scope="col" data-sortable="" style="width: 19.1646%;">
+                        <a href="#" class="dataTable-sorter">Actions</a>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                  <div id="all">
+                    {% for u in user %}
+                         <tr >
+                      <th scope="row">{{u.id}}</th>
+                      <td>
+                      
+                     {% if u.image == null %}
+                     
+                      <img src="{{ asset('/uploads/images/user.jpg') }}" width="100px" height="100px" alt=""class="rounded-circle" />
+                      {% else %}
+
+                       <img src="{{ asset('/uploads/images/' ~ u.image) }}" width="100px" height="100px" alt="" class="rounded-circle"/>
+                     {% endif %}
+                     
+                      
+                      
+                      </td>
+                      <td>{{u.firstName}}</td>
+                      <td>{{u.secondName}}</td>
+                      <td>{{u.phone}}</td>
+                      <td>{{u.email}}</td>
+                
+                      <td>
+
+<a type="button" class="btn btn-danger" href="{{ path('DeleteAdmin', { 'id': u.getId()  }) }}">Delete</a>
+
+     <a type="button" class="btn btn-danger" data-target="#deleaate" data-toggle="modal">Delete</a> 
+                     <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleaate" >Delete</a> 
+
+<div class="modal fade" id="deleaate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Are you sure to delete this Admin ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a type="button" class="btn btn-danger" href="{{ path('DeleteAdmin', { 'id': u.getId()  }) }}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+ </td>                                       
+                  </div>      
+    {% endfor %}
+
+   
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">ADD ADMIN</button>
+            {# <h2 style="color:red;">Welcome {{app.user.firstName}} {{app.user.secondName}} it's  {{ "now"|date("H:i:s  d/m/Y") }}</h2> #}
+
+
+                  </tbody>
+                  
+                </table>
+                
+              </div>
+              
+              <div class="dataTable-bottom">
+              
+                <div class="dataTable-info">Showing 1 to 5 of 5 entries</div>
+                <nav class="dataTable-pagination">
+                  <ul class="dataTable-pagination-list"></ul>
+                </nav>
+                
+              </div>
+            </div>
+            <!-- End Table with stripped rows -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 

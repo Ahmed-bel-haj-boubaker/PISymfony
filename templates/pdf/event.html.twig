@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        img.logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    
+</head>
+<body>
+ {% for i in events %}
+    
+ 
+<div class="container">
+    <h1>Invitation à {{i.nomEvent}}</h1>
+    <p>Cher(e) ami(e),</p>
+    <p>Nous avons le plaisir de vous inviter à notre événement spécial : {{i.nomEvent}}. C'est une occasion unique pour passer un moment de détente et de convivialité avec nous.</p>
+    <p>Nous avons prévu une journée incroyable remplie de divertissement, d'activités et de délicieux repas. Vous aurez également la chance de voir et de profiter de l'événement que nous avons préparé pour cette occasion spéciale.</p>
+    <p>Nous sommes fiers de vous présenter {{i.nomEvent}}, un événement de pointe qui vous garantira une expérience exceptionnelle. L'événement aura lieu le {{i.dateEvent|date('d/m/Y')}} dans notre lieu de rassemblement situé à {{i.localisation}}. Nous sommes impatients de vous accueillir et de partager cette journée inoubliable avec vous.</p>
+    
+    <p>Cordialement,</p>
+</div>
+{% endfor %}
+</body>
+</html>

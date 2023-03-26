@@ -1,0 +1,16 @@
+{% extends 'back.html.twig' %}
+
+
+{% block main %}
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+    <h1>Localisation</h1>
+
+    {{ include('localisation/_form.html.twig') }}
+
+    <a href="{{ path('app_localisation_index') }}">back to list</a>
+    
+{% endblock %}

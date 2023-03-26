@@ -1,0 +1,36 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block footer %}{% endblock %}
+{% block body %}{% endblock %}
+{% block banner %}{% endblock %}
+{% block content %}
+   
+   <br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+
+   <center> <h1>Ajouter une Reclamationn</h1> </center>
+<br><br>
+<br><br>
+    
+    {{ include('reclamtionfront/_form.html.twig') }}
+<br><br>
+   <center>
+ 
+</center>
+<br><br>
+<br><br>
+<button class="btn btn-outline-secondary">
+    <a href="{{ path('app_qr_codes') }}">Facebook page QR</a>
+   </button>
+
+<br><br>
+<br><br>
+ 
+
+{% endblock %}

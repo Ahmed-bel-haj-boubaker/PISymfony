@@ -1,0 +1,17 @@
+{% extends 'back.html.twig' %}
+
+{% block main %}{% endblock %}
+
+{% block body %}
+<br><br>
+<br>
+<br>
+
+
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+{{form_widget(form.nomTransport)}}
+    {{ form_errors(form.nomTransport) }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {{form_end(form)}}
+
+{% endblock %}

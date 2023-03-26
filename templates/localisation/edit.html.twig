@@ -1,0 +1,11 @@
+{% extends 'back.html.twig' %}
+
+
+{% block main %}
+    <h1>Edit Localisation</h1>
+
+    {{ include('localisation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_localisation_index') }}">back to list</a>
+
+{% endblock %}

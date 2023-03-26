@@ -1,0 +1,16 @@
+{% extends 'back.html.twig' %}
+
+{% block main %}
+<main id="main" class="main">
+    <h1> Ajouter un type d'évenement </h1>
+    {{ form_start(f, { 'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{ form_label(f.NomType, 'Type') }}
+        {{ form_widget(f.NomType, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(f.NomType)}}
+        
+        
+    {{ form_end(f) }}
+</main>    
+{% endblock %}
+

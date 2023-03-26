@@ -1,0 +1,64 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+    
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Liste des matchs</h5>
+                
+    
+                <!-- Table with stripped rows -->
+                <table class="table datatable">
+                  <thead>
+                    <tr>
+                        <th scope="col" class="border-0 rounded-start">Numéro_match</th>
+                        <th scope="col" class="border-0">Equipe1</th>
+                        <th scope="col" class="border-0">Equipe2</th>
+                        <th scope="col" class="border-0">Type</th>
+                        <th scope="col" class="border-0">Stade</th>
+                        <th scope="col" class="border-0 rounded-end">Tournoi</th>
+                        <th scope="col" class="border-0 rounded-end">Resultat_Equipe1</th>
+                        <th scope="col" class="border-0 rounded-end">Resultat_Equipe2</th>
+                        <th scope="col" class="border-0 rounded-end">Prix</th>
+                    </tr>
+                  </thead>
+                  {%  for m in  match %}
+                <tbody>
+                <!-- Table item -->
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <!-- Title -->
+                            <h6 class="mb-0 ms-2 table-responsive-title">
+                                <a href="#">{{ m.id }}</a>
+                            </h6>
+                        </div>
+                    </td>
+                    <td>{{ m.equipeA }}</td>
+                    <td>{{ m.equipeB }}</td>
+                    <td>{{ m.typeMatch }}</td>
+                    <td>{{ m.stade }}</td>
+                    <td>{{ m.tournoi }}</td>
+                    <td>{{ m.resultatA }}</td>
+                    <td>{{ m.resultatB }}</td>
+                    <td>{{ m.prix }}</td>
+                
+                </tbody>
+                {% endfor %}
+                </table>
+    
+              <form action="{{ path('createMatch') }}">
+                <button class="btn btn-primary mb-0 mt-3" >Ajouter un match</button>
+            </form>
+            
+    
+          </div>
+        </div>
+      </section>
+    
+    </main><!-- End #main -->
+{% endblock %}
+

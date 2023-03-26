@@ -1,0 +1,59 @@
+{% extends "front.html.twig" %}
+{% block banner %}
+
+
+{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br><br><br><br><br>
+
+
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+ 
+              <div class=row><h2 class=heading>Liste Transport <span>dans Tunisie</span></h2>
+              </div
+  <div class="card" style=" padding-left:700px;">
+
+  <button  type="button" class="btn btn-secondary rounded-pill">
+						<a href="{{ path ('map')}}">voir en map</a>
+					</button>
+          <br>
+  <body>
+    </div>
+  
+    {% for s in Transports %}
+		   <div class=shop_detais>
+                                <div class="shop01 clearfix">
+                                    <div class=shop-img>
+                                        <div class=bgimg>			
+                                        <img src="{{ asset('/uploads/images/' ~ s.getImageTransport()) }}" width="400px" height="300px" alt="" />
+
+</div>
+                                    </div>
+                                    <br><br>
+                                    <div class=shop_info><h4 class=headline01><a href=product-details.html>			{{s.nomTransport}}
+                                    </a></h4>
+
+                                        <div class=star><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i></div>
+                                        <p>			{{s.categoryTransport}}
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+		{% endfor %}
+  </body>
+    {{ knp_pagination_render(Transports) }}
+    
+</html>
+{{form(form)}}
+{% endblock %}
+                           

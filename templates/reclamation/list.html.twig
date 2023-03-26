@@ -1,0 +1,56 @@
+{% extends "back.html.twig" %}
+{% block main %}
+<br><br><br><br><br>
+
+{{form(form_NSC)}}
+<div class="card"  style=" padding-left:500px;">
+    <div class="card-body">
+      <h5 class="card-title">liste reclamation</h5>
+
+      <!-- Default Table -->
+      <table class="table" style="width: 200px;">
+        <thead>
+          <tr>
+            
+
+            <th scope="col">id</th>
+
+            <th scope="col">sujet reclamation</th>
+            <th scope="col">description reclamation</th>
+            <th scope="col">email</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for s in Reclamations %}
+            <tr>
+               
+                <td>{{s.id}}</td>
+                <td>{{ s.sujet}}</td>
+                <td>{{ s.descreption}}</td>
+                <td>{{ s.email}}</td>
+
+               
+                    <button class="btn btn-outline-info">
+                    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+                    </button>
+                <button class="btn btn-outline-info">
+                    <a href="{{ path('reponse_add', {'id': reclamation.id}) }}">Repondre</a>
+                    </button>
+
+                  {{ include('reclamation/deleteRec.html.twig') }}
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <!-- End Default Table Example -->
+                                    <td>
+
+                 <button class="btn btn-secondary rounded-pill">
+                  <a href="{{path ('AddReclamation')}}"> Ajouter</a>
+                  </button>
+                                </td>
+    </div>
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,307 @@
+{% extends 'front.html.twig' %}
+
+{% block stylesheets %}
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    box-sizing:border-box;
+}
+
+
+button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    color: #000;
+    font-size: 14px;
+    padding: 10px 25px;
+}
+
+</style>
+{% endblock %}
+{% block header %}
+   <header class=header-main>
+        <div class=header-upper>
+            <div class=container>
+          
+                <div class="row">
+                <ul>
+                {% if is_granted('IS_AUTHENTICATED_FULLY')  %} 
+
+                 <li>                
+                 {% if app.user.image == null   %}
+                        <img src="{{asset('/uploads/images/user.jpg')}}" alt="Profile"  class="rounded-circle" style="width: 25px;padding-top:2px;">
+                        {% else %}
+                        <img src="{{asset('/uploads/images/' ~ app.user.image)}}" alt="Profile"  class="rounded-circle" style="width: 25px;padding-top:6px;">
+                       {% endif %}</li>
+                        <li><a href="{{path('clientProfileee')}}">{{app.user.firstName}} {{app.user.secondName}}</a></li>
+                        
+                        <li><a href="{{path('app_logout')}}"><i class="fa fa-sign-out"></i> 
+                        <span>Logout</span></a>
+                    </li>                 
+                    {% else %}
+                     <ul>
+
+                        <li><a href="{{path('app_login')}}">Signup/login</a></li>
+                        <li><a href=shopcart.html><i class="fa fa-shopping-cart"></i> <span>cart(<span  class=cartitems>0</span>)</span></a></li>
+                    </ul>
+                    {% endif %}
+                </ul>
+                   
+                </div>
+            </div>
+        </div>
+       <div class=header-lower clearfix>
+            <div class=container>
+                <div class=row><h1 class=logo><a href=index-2.html><img src="{{asset('assetsFront/images/tunisport.png')}}" alt=image></a></h1>
+
+                 <div class=menubar>
+                        <nav class=navbar>
+                            <div class=nav-wrapper>
+                                <div class=navbar-header>
+                                    <button type=button class=navbar-toggle><span class=sr-only>Toggle navigation</span>
+                                        <span class=icon-bar></span></button>
+                                </div>
+                                <div class=nav-menu>
+                                    <ul class="nav navbar-nav menu-bar">
+                                        <li><a href="{{path('frontMatch')}}">Home <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                         <li><a href="{{path('read_Match')}}">Matchs <span></span> <span></span>
+                                            <span></span> <span></span></a></li>
+                                        <li><a href="#">réservation <span></span> <span></span> <span></span>
+                              
+
+                                        <li><a href="{{path('readblogfront')}}" >blog <span></span> <span></span>
+                                            <span></span> <span></span></a></li>
+                                       
+                                        <li><a href="{{path('read_Event')}}">Evenement <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                             <li><a >Hebergement <span></span> <span></span> <span></span> <span></span></a>
+                                            <ul class=sub-menu>
+                                                <li><a href="{{path('listHebergement')}}">Liste hebergement </a></li>
+                                                <li><a href="{{path('listTransport')}}">Transport</a></li>
+                     
+                                            </ul>
+                                        </li>
+                                        <li><a href=contact.html>contact <span></span> <span></span> <span></span>
+                                            <span></span></a></li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class=social><a href=https://www.facebook.com/templatespoint.net class=facebook><i
+                            class="fa fa-facebook"></i></a> <a href=https://twitter.com/itobuztech class=twitter><i
+                            class="fa fa-twitter"></i></a> <a href=https://www.behance.net/ class=behance><i
+                            class="fa fa-behance"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block banner %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>Récents <span> Matchs</span></h2></div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <section class="innerpage_all_wrap bg-white">
+        <div class=container>
+            <div class=row><h2 class=heading>Ligue 1 Tunisie <span>Partenaire Officiel</span></h2>
+
+                <p class=headParagraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat quisquam
+                    reprehenderit, blanditiis nam debitis libero facilis illum repudiandae eveniet voluptatibus
+                    quibusdam illo ea nisi ipsa accusantium nobis animi asperiores quaerat ,Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Fugiat quisquam reprehenderit, blanditiis nam debitis libero facilis
+                    illum repudiandae eveniet voluptatibus quibusdam illo ea nisi ipsa accusantium nobis animi
+                    asperiores quaerat .</p>
+                    
+                    
+                        
+
+                <div class=innerWrapper>
+                    <aside class="widgetinner clearfix">
+                        <div class=widgetinfowrap>
+                            <div class=bg-blackimg>why book width us?</div>
+                            <ul class="widgetinfo info01">
+                                <li>150% MONEY BACK GURANTEE</li>
+                                <li>REAL TIME INVENTory</li>
+                                <li>friendly customer service</li>
+                                <li>secure payment</li>
+                                <li>last minute bookings</li>
+                                <li>7 years online swering fans</li>
+                            </ul>
+                            <a href=# class=blacklrnmore>learn more</a></div>
+                        
+                    </aside>
+                       
+                       
+                    <aside class=contentinner>
+                            <div class="bg-red shop_select clearfix">
+                            <div class=select_shopping>
+                                <form action="{{ path('read_Match') }}" method="get">
+                                    <div class=form-group><label class=headline01>Equipe à domicile</label><select
+                                            class=form-control >
+                                       
+                                           
+                                                <option value=""></option>
+                                           
+                                        
+                                    </select></div>
+                                    <div class=form-group><label class=headline01>Prix</label><select
+                                            class=form-control name="prix">
+                                       
+                                            
+                                                <option value=""> </option>
+                                            
+                                        
+                                    </select></div>
+                                    <button type="submit" >Filter</button>
+                                </form>
+                            </div>
+                        </div>
+                        <p class=headParagraph>--------------------------------</p>
+                    
+                        
+                            <div class="bg-red headline01">Ligue 1 Tunisie</div>
+                            <ul class=ticketInfo >
+                            <div id="match-container">
+                                {% for m in match %}
+                                    {% if m.tournoi.nom=="ligue 1" %}
+                                        {% if m.nbBilletReserve < m.nbBilletTotal %}
+                                            <li>
+                                                <ul class="t_info headline01 clearfix">
+                                                    <li></li>
+                                                    <li>
+                                                        <div class="headline01 clearfix"><span>{{m.equipeA.slug}}</span><span
+                                                                class=vs>vs</span> <span>{{m.equipeB.slug}}</span></div>
+                                                        <div class="ticketInner_info paragraph02 clearfix"><span>{{m.dateMatch.format('d/m/Y')}}</span>
+                                                            <span>{{m.heureDebM.format('H:i')}}</span> <span class=capitalize01>{{m.stade}}</span>
+                                                        </div>
+                                                    </li>
+                                                    <li><a href="{{path('create_Reservation', {'match_id': m.id}) }}" class="btn-small01 btn-green">Réserver billet</a></li>
+                                                </ul>
+                                                       
+                                                    
+                                            </li>
+                                        {% endif %}
+                                        {% if m.nbBilletReserve >= m.nbBilletTotal %}
+                                            <li>
+                                                <ul class="t_info headline01 clearfix">
+                                                    <li></li>
+                                                    <li>
+                                                        <div class="headline01 clearfix"><span>{{m.equipeA.slug}}</span><span
+                                                                class=vs>vs</span> <span>{{m.equipeB.slug}}</span></div>
+                                                        <div class="ticketInner_info paragraph02 clearfix"><span>{{m.dateMatch.format('d/m/Y')}}</span>
+                                                            <span>{{m.heureDebM.format('H:i')}}</span> <span class=capitalize01>{{m.stade}}</span>
+                                                        </div>
+                                                    </li>
+                                                    <li><a href="#" class="btn-small01 btn-red">Billets non dispo</a></li>
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                 
+                                {% endfor %}
+                                <div class="pagination-links">
+                                {{ knp_pagination_render(match) }}
+                                </div>
+                            </div>
+                            <div id="more-matches-container"></div>
+                            </ul>
+                            
+                            
+                             <div class=center></div>
+                          
+                           
+                            
+                        
+                            
+                        
+                        
+                            <div class="bg-red headline01">Coupe de Tunisie</div>
+                            <div id="match-list1">
+                            <ul class=ticketInfo>
+                                {% for m in match %}
+                                    
+                                {% if m.tournoi.nom=="coupe de Tunisie" %}
+                                {% if m.nbBilletReserve < m.nbBilletTotal %}
+                                <li>
+                                    <ul class="t_info headline01 clearfix">
+                                        <li></li>
+                                        <li>
+                                            <div class="headline01 clearfix"><span>{{m.equipeA.slug}}</span><span
+                                                    class=vs>vs</span> <span>{{m.equipeB.slug}}</span></div>
+                                            <div class="ticketInner_info paragraph02 clearfix"><span>{{m.dateMatch.format('d/m/Y')}}</span>
+                                                <span>{{m.heureDebM.format('H:i')}}</span> <span class=capitalize01>{{m.stade}}</span>
+                                            </div>
+                                        </li>
+                                        <li><a href="{{path('create_Reservation', {'match_id': m.id}) }}" class="btn-small01 btn-green">Réserver billet</a></li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                                {% if m.nbBilletReserve >= m.nbBilletTotal %}
+                                <li>
+                                    <ul class="t_info headline01 clearfix">
+                                        <li></li>
+                                        <li>
+                                            <div class="headline01 clearfix"><span>{{m.equipeA.slug}}</span><span
+                                                    class=vs>vs</span> <span>{{m.equipeB.slug}}</span></div>
+                                            <div class="ticketInner_info paragraph02 clearfix"><span>{{m.dateMatch.format('d/m/Y')}}</span>
+                                                <span>{{m.heureDebM.format('H:i')}}</span> <span class=capitalize01>{{m.stade}}</span>
+                                            </div>
+                                        </li>
+                                        <li><a href="#" class="btn-small01 btn-red">Billets non dispo</a></li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                                {% endif %}
+                                
+                                {% endfor %}
+                                <div class="pagination-links">
+                                 {{ knp_pagination_render(match) }}
+                                 
+                                </div>
+                             
+                        </ul>
+                        
+                        <div class=center></div>
+                        
+                        
+                        <div class=buymatchticket>
+                            <div class=bg-red><h5>how by a match ticket</h5></div>
+                            <div class=ticktbody><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis,
+                                illum ut qui tenetur earum placeat? Molestiae libero debitis alias quo officiis amet
+                                quos mollitia vero modi, praesentium, iusto, harum eaque.</p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ratione ad cum nobis
+                                    voluptatum veritatis consequuntur distinctio quia velit reiciendis, quod rem earum
+                                    alias, tempore placeat! Modi dolore necessitatibus quod.</p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ratione ad cum nobis
+                                    voluptatum veritatis consequuntur distinctio quia velit reiciendisd.</p>
+
+                                <div class=socialTicket><a href=https://www.facebook.com/templatespoint.net
+                                                           class="social_link facebook"><i
+                                        class="fa fa-facebook"></i></a> <a href=https://twitter.com/
+                                                                           class="social_link twitter"><i
+                                        class="fa fa-twitter"></i></a> <a href=https://www.behance.net/
+                                                                          class="social_link behance"><i
+                                        class="fa fa-behance"></i></a></div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+<script src="{{asset('js/vendor/vendor.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
+{% endblock %}

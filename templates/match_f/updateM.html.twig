@@ -1,0 +1,55 @@
+{% extends 'back.html.twig' %}
+
+{% block main %}
+<main id="main" class="main">
+    {{ form_start(f, { 'attr': {'novalidate': 'novalidate'}}) }}
+       
+            {{ form_label(f.equipeA, 'Equipe à domicile') }}
+            {{ form_widget(f.equipeA, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.equipeA)}}
+        
+            {{ form_label(f.equipeB, 'Equipe extérieure') }}
+            {{ form_widget(f.equipeB, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.equipeB)}}
+        
+            {{ form_label(f.dateMatch, 'Date du match') }}
+            {{ form_widget(f.dateMatch, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.dateMatch)}}
+            
+        
+       
+            {{ form_label(f.heureDebM, 'Heure de début du match') }}
+            {{ form_widget(f.heureDebM, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.heureDebM)}}
+     
+        
+            {{ form_label(f.tournoi, 'Tournoi') }}
+            {{ form_widget(f.tournoi, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.tournoi)}}
+     
+       
+            {{ form_label(f.typeMatch, 'Type') }}
+            {{ form_widget(f.typeMatch, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.typeMatch)}}
+
+            {{ form_label(f.stade, 'Stade') }}
+            {{ form_widget(f.stade, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.stade)}}
+        
+       
+          {{ form_label(f.resultatA, 'Résultat équipe à domicile') }}
+          {{ form_widget(f.resultatA, { 'attr': {'class': 'form-control'} }) }}
+          {{ form_errors(f.resultatA)}}
+     
+        
+            {{ form_label(f.resultatB, 'Résultat équipe extérieure') }}
+            {{ form_widget(f.resultatB, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.resultatB)}}
+
+            {{ form_label(f.prix, 'Prix') }}
+            {{ form_widget(f.prix, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(f.prix)}}
+
+            {{ form_end(f) }}
+</main>
+{% endblock %}

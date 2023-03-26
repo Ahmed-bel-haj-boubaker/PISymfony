@@ -1,0 +1,35 @@
+{% extends 'back.html.twig' %}
+{% block main %}
+<br><br><br><br><br><br>
+<center><h1 class="card-title"> Liste des commentaire</h1></center>
+<table border="2" class="table datatable dataTable-table">
+    <tr> <th>Id</th>
+        
+        {# <th> User Id</th> #}
+        <th> Blog Id </th>
+        <th> Contenu </th>
+        <th> Date  </th>
+        <th> Action  </th>
+    </tr>
+    {%  for c in  commentaires %}
+        <tr>
+            <td>  {{ c.id }}</td>
+            {# <td>  {{ c.user_id }} </td> #}
+            <td>  {{ c.blog }} </td>
+            <td>  {{ c.contenuCom }} </td>
+            <td>  {{ c.dateC |date('d-m-Y') }} </td>
+           
+            <td><a href="{{ path('app_sentiment', {text:c.contenuCom}) }}">Detect </a> 
+                <a href="{{ path('delete_commentaire', {id:c.id}) }}">Delete </a>
+                <a href="{{ path('update_commentaire', {id:c.id}) }}">Update </a>
+
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<center>
+<a href="{{ path('add_commentaire') }}">
+    <button class="btn btn-primary">Add commentaire</button>
+</a>
+</center>
+{% endblock %}
